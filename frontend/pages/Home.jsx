@@ -9,7 +9,7 @@ export default function Home() {
             <img src="/paintball1.png" alt="" className='mt-3 ' style={{ width: '100%' , height:"500px"}}/>
           </div>
         </div>
-        <div className="row mt-1">
+        <div className="row mt-3">
           <div className="col-2 text-center mt-5">
             <button>Reservar Ahora</button>
           </div>
