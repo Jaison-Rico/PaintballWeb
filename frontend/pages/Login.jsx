@@ -30,12 +30,12 @@ export default function Login() {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary w-100">
+            <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: "#2C3E50", color: "#fff", border: "none", }}>
               Ingresar
             </button>
 
-            <div className="text-center mt-3">
-              <a href="#">¿Olvidaste tu contraseña?</a>
+            <div className="text-center mt-3" >
+              <a style={{ color: "#2C3E50", border: "none", textDecoration: "none" }} href="#">¿Olvidaste tu contraseña?</a>
             </div>
           </form>
         </div>

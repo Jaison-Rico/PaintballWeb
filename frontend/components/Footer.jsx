@@ -1,115 +1,63 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
+import { FaFacebook, FaInstagram, FaGithub, FaWhatsapp, FaPhone } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <div>
-      <div className="container mt-3">
-        <footer>
-          <div
-            className="container-fluid "
-            style={{ backgroundColor: "#EFF2D8" }}
-          >
-            <div className="row p-5 pe-1 ">
-              <div className="col-md-6 col-xs-12 col-lg-4 ">
-                <p className="h5 pb-3">Paintball Medellin</p>
-                <div>
-                  <p className="text-secondary pb-2">
-                    Paintball Medellín ofrece experiencias de paintball llenas
-                    de adrenalina en escenarios estratégicos. Diversión segura
-                    para amigos, empresas y eventos.
-                  </p>
-                </div>
-              </div>
-              <div className="col-md-6 col-xs-12 col-lg-4">
-                <p className="h5 pb-3 ">Explora</p>
-                <div>
-                  <p>
-                    <Link
-                      to="/"
-                      className="text-secondary text-decoration-none"
-                    >
-                      Inicio
-                    </Link>
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    <Link
-                      to="/Products"
-                      className="text-secondary text-decoration-none"
-                    >
-                      Reservar
-                    </Link>
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    <Link
-                      to="/Login"
-                      className="text-secondary text-decoration-none"
-                    >
-                      Login
-                    </Link>
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    <Link
-                      to="/Register"
-                      className="text-secondary text-decoration-none"
-                    >
-                      Registrarse
-                    </Link>
-                  </p>
-                </div>
-              </div>
-              <div className="col-md-6 col-xs-12 col-lg-4  ">
-                <p className="h5 pb-3">Contactos</p>
-                <div className="d-flex ">
-                  <img
-                    src="/telefono.png"
-                    alt=""
-                    className="me-2 "
-                    style={{ width: "20px", height: "20px" }}
-                  />
-                  <p className="text-secondary ">+57 3008867588</p>
-                </div>
-                <img
-                  src="/facebook.png"
-                  alt=""
-                  className="me-3 "
-                  style={{ width: "30px", height: "30px" }}
-                />
-                <img
-                  src="/instagram.png"
-                  alt=""
-                  className="me-3 "
-                  style={{ width: "30px", height: "30px" }}
-                />
-                <img
-                  src="/github.png"
-                  alt=""
-                  className="me-3 "
-                  style={{ width: "30px", height: "30px" }}
-                />
-                <img
-                  src="/whatsapp.png"
-                  alt=""
-                  className="me-2 "
-                  style={{ width: "30px", height: "30px" }}
-                />
-              </div>
+    <footer className="py-5 mt-5" style={{ backgroundColor: "#2C3E50", color: "#fff" }}>
+      <Container>
+        <Row className="gy-4 text-center text-md-start">
+          <Col md={4}>
+            <h5 className="fw-bold">Paintball Medellín</h5>
+            <p>
+              Paintball Medellín ofrece experiencias llenas de adrenalina en escenarios estratégicos.
+              Diversión segura para amigos, empresas y eventos.
+            </p>
+          </Col>
+          <Col md={4}>
+            <h5 className="fw-bold">Explora</h5>
+            <ul className="list-unstyled">
+              <li><Link to="/" className="text-white text-decoration-none footer-link">Inicio</Link></li>
+              <li><Link to="/Products" className="text-white text-decoration-none footer-link">Reservar</Link></li>
+              <li><Link to="/Login" className="text-white text-decoration-none footer-link">Login</Link></li>
+              <li><Link to="/Register" className="text-white text-decoration-none footer-link">Registrarse</Link></li>
+            </ul>
+          </Col>
+
+          <Col md={4}>
+            <h5 className="fw-bold">Contactos</h5>
+            <p className="d-flex align-items-center">
+              <FaPhone className="me-2" /> +57 3008867588
+            </p>
+            <div className="d-flex justify-content-center justify-content-md-start gap-3">
+              <a href="#" className="text-white fs-4 footer-icon"><FaFacebook /></a>
+              <a href="#" className="text-white fs-4 footer-icon"><FaInstagram /></a>
+              <a href="#" className="text-white fs-4 footer-icon"><FaGithub /></a>
+              <a href="#" className="text-white fs-4 footer-icon"><FaWhatsapp /></a>
             </div>
-            <div>
-              <p className="text-white text-center pb-4">
-                &copy; 2025 Paintball Medellin - Todos los derechos reservados
-              </p>
-            </div>
-          </div>
-        </footer>
-      </div>
-         
-    </div>
+          </Col>
+        </Row>
+
+        <div className="text-center mt-4 pt-3 border-top border-light">
+          &copy; 2025 Paintball Medellín - Todos los derechos reservados
+        </div>
+      </Container>
+
+      {/* Estilos adicionales */}
+      <style>
+        {`
+          .footer-link:hover {
+            color: #f39c12;
+            transition: 0.3s;
+          }
+
+          .footer-icon:hover {
+            color: #f39c12;
+            transition: 0.3s;
+          }
+        `}
+      </style>
+    </footer>
   );
 }
