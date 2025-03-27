@@ -1,10 +1,11 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <div>
-      <h1>Este es mi pie de página</h1>
-    </div>
-  )
+      
+    </div>
+  );
 }
 
