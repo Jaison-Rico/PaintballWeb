@@ -28,6 +28,7 @@ export default function Home() {
               src="/paintball2.png"
               alt="Paintball Match"
               className="img-fluid rounded shadow"
+              style={{height: '310px', objectFit: 'cover' }}
             />
           </div>
           <div className="col-md-3 col-6">
@@ -35,6 +36,7 @@ export default function Home() {
               src="/paintball3.png"
               alt="Paintball Team"
               className="img-fluid rounded shadow"
+              style={{height: '310px', objectFit: 'cover' }}
             />
           </div>
           <div className="col-md-3 col-6 mt-md-0 mt-3">
@@ -42,6 +44,7 @@ export default function Home() {
               src="/paintball4.png"
               alt="Paintball Players"
               className="img-fluid rounded shadow"
+              style={{height: '310px', objectFit: 'cover' }}
             />
           </div>
         </div>
