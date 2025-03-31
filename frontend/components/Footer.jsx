@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram, FaGithub, FaWhatsapp, FaPhone } from "react-ic
 
 export default function Footer() {
   return (
-    <footer className="py-5 mt-5" style={{ backgroundColor: "#2C3E50", color: "#fff" }}>
+    <footer className="py-5 " style={{ backgroundColor: "#2C3E50", color: "#fff" }}>
       <Container>
         <Row className="gy-4 text-center text-md-start">
           <Col md={4}>
@@ -27,7 +27,7 @@ export default function Footer() {
 
           <Col md={4}>
             <h5 className="fw-bold">Contactos</h5>
-            <p className="d-flex align-items-center">
+            <p className="align-items-center">
               <FaPhone className="me-2" /> +57 3008867588
             </p>
             <div className="d-flex justify-content-center justify-content-md-start gap-3">

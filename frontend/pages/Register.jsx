@@ -1,8 +1,9 @@
 import React from "react";
+import backgroundImage from "/bg3.jpg";
 
 export default function Register() {
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-light" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div
         className="card p-4 shadow-lg"
         style={{

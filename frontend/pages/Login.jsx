@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import backgroundImage from "/bg3.jpg";
+0
 export default function Login() {
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-light img-fluid" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div
         className="card p-4 shadow-lg"
         style={{ maxWidth: "400px", width: "100%" }}
