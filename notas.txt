@@ -1,0 +1,24 @@
+Extenxion
+ES7+ React/Redux/React-Native snippets
+
+npm = administrador de paquetes de node
+
+Commands:
+npm create vite@latest frontend
+React, JavaScript
+cd frontend
+npm i
+npm run dev  : para iniciar el servidor
+
+en la carpeta frontend creamos 2 carpetas llamadas components y pages
+
+en Footer crear el snippet con = rfc
+-------------------------------------------
+#1 Instalar bootstrap
+npm i bootstrap react-router-dom
+
+Eliminar los css de la carpeta assets
+
+App.jsx
+borrar los import y colocar:
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
