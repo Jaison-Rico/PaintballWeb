@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import backgroundImage from "/bg3.jpg";
+import backgroundImage from "/bg.png";
 0
 export default function Login() {
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 bg-light img-fluid" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-light img-fluid" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: "cover" }}>
       <div
         className="card p-4 shadow-lg"
         style={{ maxWidth: "400px", width: "100%" }}
       >
         <div className="card-body">
           <h2 className="text-center mb-4">Iniciar Sesión</h2>
-
+          {/* Formulario de inicio de sesión */}    
           <form>
             <div className="mb-3">
               <label className="form-label">Correo Electrónico</label>

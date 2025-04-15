@@ -23,7 +23,7 @@ export default function Home() {
           </div>
 
           {/*imagenes */}
-          <div className="col-md-3 col-6">
+          <div className="col-md-3 col-6 mb-4">
             <img
               src="/paintball2.png"
               alt="Paintball Match"
@@ -31,7 +31,7 @@ export default function Home() {
               style={{height: '310px', objectFit: 'cover' }}
             />
           </div>
-          <div className="col-md-3 col-6">
+          <div className="col-md-3 col-6 ">
             <img
               src="/paintball3.png"
               alt="Paintball Team"

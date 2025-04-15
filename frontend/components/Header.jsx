@@ -22,7 +22,7 @@ export default function Header() {
                   <a className="nav-link text-white" href="#">About</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="#">Reservas</a>
+                  <Link className="nav-link text-white" to="/Campos">Campos</Link>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link text-white" href="/Register">Registrarse</a>
