@@ -1,0 +1,26 @@
+cd backend
+npm init -y
+npm i express cors dotenv msql
+npm i nodemon -D
+
+
+modificar en package.json
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+}
+
+crear archivo ".env"{
+    colocar credenciales de la base de datos
+}
+
+crear carpeta "src" -> crear archivo "index.js"
+
+
+
+
