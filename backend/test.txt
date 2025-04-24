@@ -21,6 +21,8 @@ crear archivo ".env"{
 
 crear carpeta "src" -> crear archivo "index.js"
 
+npm i mssql
 
+ip en sql server configuration : 1433
 
 
