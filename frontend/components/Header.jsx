@@ -13,6 +13,7 @@ export default function Header() {
       sticky="top"
     >
       <Container fluid>
+      <a href="/"><img src="/logo.png" style={{height : "55px"}} /></a>
         <Navbar.Brand href="/" className="text-white fs-4 fw-bolder">
           Paintball City
         </Navbar.Brand>

@@ -12,7 +12,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="py-5 mt-5 custom-footer">
+    <footer className="py-5  custom-footer">
       <Container>
         <Row className="gy-4 text-center text-md-start">
           <Col md={4}>
