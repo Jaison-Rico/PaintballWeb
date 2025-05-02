@@ -14,9 +14,10 @@ Este proyecto está siendo desarrollado por el siguiente equipo:
 Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local:
 
 1. Abre la consola de **Git Bash** en **Visual Studio Code**.
-2. Navega hasta la carpeta `frontend` usando el siguiente comando:
+2. Navega hasta la carpeta `frontend` o `backend` usando el siguiente comando:
    ```sh
    cd frontend
+   cd backend
    ```
 3. Instala las dependencias necesarias ejecutando:
    ```sh

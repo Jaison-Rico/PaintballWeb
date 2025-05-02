@@ -1,11 +1,11 @@
 //tabla producto
-import { getAllUsuarios } from "../model/UsuariosModel.js"
+import { getAllEquipos } from "../model/EquiposModel.js"
 
 const getAllP = async ( req, res ) => {
     
     try {
-        const Usuarios = await getAllUsuarios()
-        res.json(Usuarios)
+        const Equipos = await getAllEquipos()
+        res.json(Equipos)
     } catch (error) {
         
         res.status(500).json({message : error.message})

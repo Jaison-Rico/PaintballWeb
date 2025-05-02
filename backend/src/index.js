@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import { getConnection } from './config/Connection.js'
-import router from './routes/UsuariosRoute.js'
+import router from './routes/EquiposRoute.js'
 const app = express()
 dotenv.config()
 
