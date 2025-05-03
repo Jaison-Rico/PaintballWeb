@@ -1,4 +1,4 @@
-//tabla producto
+//tabla equipos
 import { getAllEquipos } from "../model/EquiposModel.js"
 
 const getAllP = async ( req, res ) => {

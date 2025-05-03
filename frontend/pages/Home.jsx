@@ -95,7 +95,7 @@ export default function Home() {
           <Col className="pt-5">
             <Card className="shadow service-card border-0">
               <Link
-                to="/Campos"
+                to="/listarEquipos"
                 style={{
                   textDecoration: "none",
                   color: "inherit",
@@ -121,7 +121,7 @@ export default function Home() {
           <Col className="pt-5">
             <Card className="shadow service-card border-0">
               <Link
-                to="/Campos"
+                to="/campos"
                 className="card-link"
                 style={{
                   textDecoration: "none",

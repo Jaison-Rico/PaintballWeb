@@ -1,8 +1,8 @@
 import { getAllP } from '../controller/EquiposController.js'
 import express from 'express'
-const router = express.Router()
+const routerEquipos = express.Router()
 
-router.get('/listarEquipos', getAllP)
+routerEquipos.get('/listarEquipos', getAllP)
 
 
-export default router
+export default routerEquipos
