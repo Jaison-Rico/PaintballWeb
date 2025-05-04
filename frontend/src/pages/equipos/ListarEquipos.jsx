@@ -23,9 +23,9 @@ export default function ListarEquipos() {
   };
 
 //   Funcion para editar
-//   const editar = (id) => {
-//     alert(`Estas editando el dato ${id}`);
-//   };
+   const editar = (id) => {
+     alert(`Estas editando el dato ${id}`);
+  };
 
   return (
     <div>
@@ -43,25 +43,18 @@ export default function ListarEquipos() {
             </tr>
           </thead>
           <tbody>
-            {equipos.length === 0 ? (
-              <tr>
-                <td colSpan="4" className="text-center">
-                  No hay datos
-                </td>
-              </tr>
-            ) : (
-              equipos.map((e, index) => (
+            {equipos.map((e, index) => (
                 <tr key={e.id_equipo} className="text-center">
                   <td>{index + 1}</td>
                   <td>{e.nombre_equipo}</td>
                   <td>{e.cantidad_disponible}</td>
                   <td>{e.precio}</td>
                   <td>
-                    {/* <button onClick={() => editar(e.id_equipo)}>Editar</button> */}
+                    <button className="text-body border-primary" onClick={() => editar(e.id_equipo)}>Editar</button>
                   </td>
                 </tr>
               ))
-            )}
+            }
           </tbody>
         </table>
       </Container>
