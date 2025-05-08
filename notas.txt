@@ -22,3 +22,5 @@ Eliminar los css de la carpeta assets
 App.jsx
 borrar los import y colocar:
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+
+npm i sweetalert2 en el frontend - Sirve para trabajar con ventanas modales

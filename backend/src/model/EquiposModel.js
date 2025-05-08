@@ -1,9 +1,19 @@
-import { getConnection } from "../config/Connection.js";
+import { sql, getConnection } from "../config/Connection.js";
 
 const getAllEquipos = async ()=>{
     const con = await getConnection
-    const result = await con.request().query('SELECT * FROM Equipos')
+    const result = await con.request().execute('sp_listar_equipamientos')
     return result.recordset
 }
 
-export { getAllEquipos }
+const addEquipo = async (equipo) =>{
+    const [nombre_equipo, cantidad_disponible, precio] = producto
+    const con = await getConnection
+    await con.request()
+    .input('nombre_equipo', sql.VarChar, nombre_equipo)
+    .input('cantidad_disponible', sql.Int, cantidad_disponible)
+    .input('precio', sql.Int, precio)
+    .execute('sp_insertar_equipo')
+}
+
+export { getAllEquipos, addEquipo }
