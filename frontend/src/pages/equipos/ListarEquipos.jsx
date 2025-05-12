@@ -37,7 +37,7 @@ export default function ListarEquipos() {
   };
 
   const handleChanges = (e) => {
-    setEquipo({...equipo, [e.target.name] : [e.target.value]})
+    setEquipo({...equipo, [e.target.name] : e.target.value})
   }
 
   const handleSubmit = (e) => {

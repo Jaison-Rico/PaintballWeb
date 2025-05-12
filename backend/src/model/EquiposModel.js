@@ -7,7 +7,7 @@ const getAllEquipos = async ()=>{
 }
 
 const addEquipo = async (equipo) =>{
-    const [nombre_equipo, cantidad_disponible, precio] = producto
+    const {nombre_equipo, cantidad_disponible, precio} = equipo
     const con = await getConnection
     await con.request()
     .input('nombre_equipo', sql.VarChar, nombre_equipo)
