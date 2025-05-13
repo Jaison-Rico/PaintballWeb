@@ -50,6 +50,30 @@ export default function ListarEquipos() {
     })
 
   }
+
+  const handleEliminar = (id_equipo) =>{
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:3001/${id_equipo}`)
+        .then(()=>{
+        })
+        .catch(error, console.log (error))
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
+  }
   
 
   return (
@@ -70,14 +94,15 @@ export default function ListarEquipos() {
             </tr>
           </thead>
           <tbody>
-            {equipos.map((e, index) => (
+            {equipos.map((e) => (
                 <tr key={e.id_equipo} className="text-center">
-                  <td>{index + 1}</td>
+                  <td>{e.id_equipo}</td>
                   <td>{e.nombre_equipo}</td>
                   <td>{e.cantidad_disponible}</td>
                   <td>{e.precio}</td>
-                  <td>
-                    <button className="text-body border-primary" onClick={() => editar(e.id_equipo)}>Editar</button>
+                  <td scope="row">
+                    <button onClick={() => editar(e.id_equipo)} className="text-body border-primary">Editar</button>
+                    <button onClick={() => handleEliminar(e.id_equipo)} className="text-body border-warning">Eliminar</button>
                   </td>
                 </tr>
               ))
