@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react"; 
 import { obtenerReservas } from "../../services/reservaService"; 
 import { Container } from "react-bootstrap";
+import { Modal } from "react-bootstrap"; 
+import Swal from 'sweetalert2' 
+import axios from "axios";
 
 export default function ListarEquipos() {
   const [reservas, setReservas] = useState([]); 
   const [error, setError] = useState(""); 
+  const [reserva, setReserva] = useState({
+    //atributos bd
+  })
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
    
@@ -20,6 +27,20 @@ export default function ListarEquipos() {
       setError(error.message || "Error desconocido");
     }
   };
+
+  const handleChanges = (e) => {
+    setReserva({...reserva, [e.target.name] : e.target.value})
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post('', reserva)
+    .then(response => {
+      Swal.fire('Exitoso', 'Equipo Registrado', 'success')
+      setShowModal(false)
+      fetchReservas()
+    })
+  }
 
   return (
     <div>
