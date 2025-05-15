@@ -31,10 +31,10 @@ export default function ListarEquipos() {
     }
   };
 
-//   Funcion para editar
-   const editar = (id) => {
-     alert(`Estas editando el dato ${id}`);
-  };
+// //   Funcion para editar
+//    const editar = (id) => {
+//      alert(`Estas editando el dato ${id}`);
+//   };
 
   const handleChanges = (e) => {
     setEquipo({...equipo, [e.target.name] : e.target.value})

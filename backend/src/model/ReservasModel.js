@@ -20,7 +20,14 @@ const addReserva = async (reserva)=>{
     .input('duracion_reserva', sql.Int, duracion_reserva)
     .input('estado_reserva', sql.VarChar, estado_reserva)
     .execute('sp_insertar_reserva');
-
 }
 
-export { getAllReservas, addReserva }
+const deleteReserva = async (reserva) =>{
+    const {id_reserva} = reserva
+    const con = await getConnection
+    await con.request()
+    .input('id_reserva', sql.Int, id_reserva)
+    .execute('sp_eliminar_reserva')
+}
+
+export { getAllReservas, addReserva, deleteReserva }

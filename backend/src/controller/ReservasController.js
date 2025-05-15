@@ -1,4 +1,4 @@
-import { getAllReservas, addReserva } from "../model/ReservasModel.js"
+import { getAllReservas, addReserva, deleteReserva } from "../model/ReservasModel.js"
 
 const getAllR = async ( req, res ) => {
     
@@ -21,4 +21,13 @@ const addR = async (req, res) =>{
     }
 }
 
-export {getAllR, addR}
+const deleteR = async (req, res) =>{
+    try {
+        await deleteReserva(req.params)
+        res.status(201).json({message: 'Reserva eliminada.'})
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+export {getAllR, addR, deleteR}

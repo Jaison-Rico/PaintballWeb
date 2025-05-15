@@ -1,9 +1,10 @@
-import { getAllR, addR } from '../controller/ReservasController.js'
+import { getAllR, addR, deleteR } from '../controller/ReservasController.js'
 import express from 'express'
-const routerReservas = express.Router()
+const router = express.Router()
 
-routerReservas.get('/listarReservas', getAllR)
-routerReservas.post('/insertarR', addR)
+router.get('/listarReservas', getAllR)
+router.post('/insertarR', addR)
+router.delete('/:id_reserva', deleteR)
 
 
-export default routerReservas
+export default router

@@ -40,12 +40,40 @@ export default function ListarEquipos() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:3001/insertarR', reserva)
+    
+    axios.post('http://localhost:3001/api/reservs/insertarR', reserva)
     .then(response => {
       Swal.fire('Exitoso', 'Reserva Registrada', 'success')
       setShowModal(false)
       fetchReservas()
     })
+    
+  }
+  console.log(reserva)
+
+  const handleEliminar = (id_reserva) =>{
+    console.log("loog de id",id_reserva)
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:3001/api/reservs/${id_reserva}`)
+        .then(()=>{
+        })
+        .catch(error, console.log (error))
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
   }
 
   return (
