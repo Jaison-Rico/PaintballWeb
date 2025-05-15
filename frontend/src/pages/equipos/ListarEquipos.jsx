@@ -42,7 +42,7 @@ export default function ListarEquipos() {
 
   const handleSubmit = (e) => {
     e.preventDefault() //no se envia por defecto hace que el formulario se ejecute por logica
-    axios.post('http://localhost:3001/insertarE', equipo)
+    axios.post('http://localhost:3001/api/equipt/insertarE', equipo)
     .then(response => {
       Swal.fire('Exitoso', 'Equipo Registrado', 'success')
       setShowModal(false)
@@ -62,7 +62,7 @@ export default function ListarEquipos() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3001/${id_equipo}`)
+        axios.delete(`http://localhost:3001/api/equipt/${id_equipo}`)
         .then(()=>{
         })
         .catch(error, console.log (error))
