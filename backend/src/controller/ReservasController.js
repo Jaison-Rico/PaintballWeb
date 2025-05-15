@@ -15,8 +15,9 @@ const addR = async (req, res) =>{
     try{
         await addReserva(req.body)
         res.status(201).json({message: 'Reserva registrada'})
-    }catch{(error)
-        res.status(500),json({message: error.message})
+    }catch(error){
+        console.error('Error al registrar reserva:', error);
+        res.status(500).json({message: error.message})
     }
 }
 
