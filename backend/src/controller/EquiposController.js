@@ -48,19 +48,4 @@ const updateEquipt = async (req, res) => {
 
 }
 
-// const updateEquipt = async (req, res) => {
-//     console.log("Llega petición PUT para actualizar equipo"); // <- Verifica si entra
-//     try {
-//         const id_equipo = req.params.id_equipo;
-//         const dataToUpdate = {...req.body, id_equipo};  // incluir el id en el objeto
-//         console.log("Payload enviado al backend:", equipoEditado);
-
-        
-//         await updateEquipo(dataToUpdate);
-
-//         res.status(200).json({message: 'Equipo actualizado.'});
-//     } catch (error) {
-//         res.status(500).json({message: error.message});
-//     }
-// }
 export {getAllP, addE, deleteE, updateEquipt}
