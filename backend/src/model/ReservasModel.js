@@ -30,7 +30,7 @@ const deleteReserva = async (reserva) =>{
     .execute('sp_eliminar_reserva')
 }
 
-const updateEquipo = async (reserva) =>{
+const updateReserva = async (reserva) =>{
     console.log("Datos recibidos en modelo:", reserva)
     const {id_reserva, id_usuario, fecha_reserva, hora_inicio, hora_fin ,campo_reservado, numero_personas, duracion_reserva, estado_reserva} = reserva
     const con = await getConnection
@@ -47,4 +47,4 @@ const updateEquipo = async (reserva) =>{
     .execute('sp_actualizar_reserva')
 }
 
-export { getAllReservas, addReserva, deleteReserva, updateEquipo}
+export { getAllReservas, addReserva, deleteReserva, updateReserva}
