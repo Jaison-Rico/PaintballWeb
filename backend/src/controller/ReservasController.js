@@ -1,4 +1,4 @@
-import { getAllReservas, addReserva, deleteReserva } from "../model/ReservasModel.js"
+import { getAllReservas, addReserva, deleteReserva, updateReserva} from "../model/ReservasModel.js"
 
 const getAllR = async ( req, res ) => {
     
@@ -30,4 +30,15 @@ const deleteR = async (req, res) =>{
     }
 }
 
-export {getAllR, addR, deleteR}
+const updateReservs = async (req, res) => {
+    try {
+        const reserva = req.body
+        console.log("Datos recibidos en controlador:", reserva);
+        await updateReserva(reserva)
+        res.status(200).json({message: 'Reserva actualizada.'}) //200 es para una actualizacion, 201 es para una creacion
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+export {getAllR, addR, deleteR, updateReservs}
