@@ -14,6 +14,8 @@ export default function ListarEquipos() {
       precio : 0
   })
   const [showModal, setShowModal] = useState(false) //en false para que este cerrada hasta darle click
+  const [modoEdicion, setModoEdicion] = useState(false) //en false para que no se pueda editar hasta darle click
+  
 
   useEffect(() => {
     //useEffect se ejecuta cada vez que la pagina se renderiza
@@ -48,8 +50,9 @@ export default function ListarEquipos() {
       setShowModal(false)
       fetchEquipos()
     })
-
   }
+
+
 
   const handleEliminar = (id_equipo) =>{
     Swal.fire({
@@ -74,12 +77,36 @@ export default function ListarEquipos() {
       }
     });
   }
-  
 
+// Abrir modal con datos del equipo a editar
+  const abrirModalEditar = (equipoSeleccionado) => {
+    setEquipo(equipoSeleccionado)
+    setModoEdicion(true)
+    setShowModal(true)
+  };
+
+const handleEditar = (id_equipo) => {
+  console.log("Editando equipo:", equipo)
+  if (!equipo.nombre_equipo) {
+      Swal.fire("Error", "El nombre del equipo no puede estar vacío", "error");
+      return
+    }
+  axios.put(`http://localhost:3001/api/equipt/${id_equipo}`, equipo)
+  .then(response => {
+    Swal.fire('Exitoso', 'Equipo Editado', 'success')
+    setShowModal(false)
+    fetchEquipos()
+  })
+  .catch(error => {
+    console.error("Error al editar el equipo:", error);
+    setError(error.message || "Error desconocido");
+  })
+}
+  
   return (
       <Container>
         <br />
-        <button className="form form-control btn btn-primary p-3" onClick={() => setShowModal(true)}>Registrar Equipo</button>
+        <button className="form form-control btn btn-primary p-3" onClick={() => {setEquipo({ nombre_equipo: '', cantidad_disponible: 0, precio: 0 }), setModoEdicion(false), setShowModal(true)}}>Registrar Equipo</button>
         <br />
         <h1 className="text-center mt-5 mb-5">Listado de Equipamientos</h1>
 
@@ -101,7 +128,7 @@ export default function ListarEquipos() {
                   <td>{e.cantidad_disponible}</td>
                   <td>{e.precio}</td>
                   <td scope="row">
-                    <button onClick={() => editar(e.id_equipo)} className="text-body border-primary">Editar</button>
+                    <button onClick={() => abrirModalEditar(e)} className="text-body border-primary">Editar</button>
                     <button onClick={() => handleEliminar(e.id_equipo)} className="text-body border-warning">Eliminar</button>
                   </td>
                 </tr>
@@ -112,20 +139,23 @@ export default function ListarEquipos() {
 
         <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
-              <Modal.Title>Registro de Equipos </Modal.Title>
+              <Modal.Title>{modoEdicion ? 'Editar Equipo' : 'Registrar Equipo'}</Modal.Title>
             </Modal.Header>
-            <form onSubmit={handleSubmit}>
-              <input onChange={handleChanges} name="nombre_equipo" placeholder="Equipo" className="form form-control" />
-              <input onChange={handleChanges} name="cantidad_disponible" placeholder="Cantidad" className="form form-control" />
-              <input onChange={handleChanges} name="precio" placeholder="Precio" className="form form-control" />
+            <form onSubmit={(e) => {e.preventDefault()
+              if (modoEdicion) {
+                handleEditar(equipo.id_equipo)
+              }else {
+                handleSubmit(e)
+              }
+            }}>
+              <input onChange={handleChanges} name="nombre_equipo" placeholder="Equipo" className="form form-control" value={equipo.nombre_equipo} />
+              <input onChange={handleChanges} name="cantidad_disponible" placeholder="Cantidad" className="form form-control" value={equipo.cantidad_disponible}/>
+              <input onChange={handleChanges} name="precio" placeholder="Precio" className="form form-control" value={equipo.precio}/>
             <Modal.Footer>
-              <button className="form form-control btn btn-primary" onClick={() => setShowModal(false)}>Cancelar</button>
-              <button className="form form-control btn btn-primary" type="submit">Registrar</button>
+              <button className="form form-control btn btn-primary" type="button" onClick={() => setShowModal(false)}>Cancelar</button>
+              <button className="form form-control btn btn-primary" type="submit">{modoEdicion ? "Guardar Cambios" : "Registrar"}</button>
             </Modal.Footer>
             </form>
-
-
-          
         </Modal>    
 
       </Container>
