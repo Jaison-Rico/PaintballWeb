@@ -17,7 +17,8 @@ export default function ListarEquipos() {
     duracion_reserva: 0,           
     estado_reserva: '' 
   })
-  const [showModal, setShowModal] = useState(false)
+const [showModal, setShowModal] = useState(false)
+const [modoEdicion, setModoEdicion] = useState(false)
 
   useEffect(() => {
    
@@ -49,7 +50,6 @@ export default function ListarEquipos() {
     })
     
   }
-  console.log(reserva)
 
   const handleEliminar = (id_reserva) =>{
     console.log("loog de id",id_reserva)
@@ -71,10 +71,35 @@ export default function ListarEquipos() {
           title: "Deleted!",
           text: "Your file has been deleted.",
           icon: "success"
-        });
+        })
       }
-    });
+    })
   }
+
+// Abrir modal con datos de la reserva a editar
+const abrirModalEditar = (reservaSeleccionado) => {
+  setReserva(reservaSeleccionado)
+  setModoEdicion(true)
+  setShowModal(true)
+}
+
+const handleEditar = (id_reserva) => {
+  console.log("Editando Reserva:", reserva)
+  if (!reserva.fecha_reserva) {
+      Swal.fire("Error", "La fecha no puede estar vacia", "error");
+      return
+    }
+  axios.put(`http://localhost:3001/api/reservs/${id_reserva}`, reserva)
+  .then(response => {
+    Swal.fire('Exitoso', 'Reserva Editada', 'success')
+    setShowModal(false)
+    fetchReservas()
+  })
+  .catch(error => {
+    console.error("Error al editar la reserva:", error);
+    setError(error.message || "Error desconocido");
+  })
+}
 
   return (
     <div>
@@ -104,7 +129,7 @@ export default function ListarEquipos() {
             <td>{r.duracion_reserva} h</td>
             <td>{r.estado_reserva}</td>
             <td scope="row">
-              <button onClick={() => editar(r.id_reserva)} className="text-body border-primary">Editar</button>
+              <button onClick={() => abrirModalEditar(r)} className="text-body border-primary">Editar</button>
               <button onClick={() => handleEliminar(r.id_reserva)} className="text-body border-warning">Eliminar</button>
             </td>
           </tr>
@@ -114,10 +139,17 @@ export default function ListarEquipos() {
 
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
-            <Modal.Title>Registro de Reservas</Modal.Title>
+            <Modal.Title>{modoEdicion ? 'Editar Reserva' : 'Registrar Reserva'}</Modal.Title>
           </Modal.Header>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={(r) => {r.preventDefault()
+            if (modoEdicion) {
+              handleEditar(reserva.id_reserva)
+            }
+            else {
+              handleSubmit(r)
+            }
+          }}>
             <div className="mb-2">
               <label>Fecha de Reserva</label>
               <input type="date"name="fecha_reserva"onChange={handleChanges}className="form form-control"required/>
@@ -125,16 +157,16 @@ export default function ListarEquipos() {
 
             <div className="mb-2">
               <label>Hora de Inicio Reserva</label>
-              <input type="number"name="hora_inicio"onChange={handleChanges}className="form form-control"required/>
+              <input type="number"name="hora_inicio"onChange={handleChanges}className="form form-control"required value={reserva.hora_inicio}/>
             </div>
             <div className="mb-2">
               <label>Hora de Fin Reserva</label>
-              <input type="number"name="hora_fin"onChange={handleChanges}className="form form-control"required/>
+              <input type="number"name="hora_fin"onChange={handleChanges}className="form form-control"required value={reserva.hora_fin}/>
             </div>
 
             <div className="mb-2">
               <label>Campo Reservado</label>
-              <select name="campo_reservado"onChange={handleChanges}className="form form-control"required>
+              <select name="campo_reservado"onChange={handleChanges}className="form form-control"required value={reserva.campo_reservado}>
                 <option value="">Seleccione un campo</option>
                 <option value="Campo Envigado">Campo Envigado</option>
                 <option value="Campo Bello">Campo Bello</option>
@@ -144,7 +176,7 @@ export default function ListarEquipos() {
 
             <div className="mb-2">
               <label>Número de Personas</label>
-              <input type="number"name="numero_personas"min="1"onChange={handleChanges}className="form form-control"required/>
+              <input type="number"name="numero_personas"min="1"onChange={handleChanges}className="form form-control"required value={reserva.numero_personas}/>
             </div>
 
             {/* <div className="mb-2">
@@ -154,7 +186,7 @@ export default function ListarEquipos() {
 
             <Modal.Footer>
               <button className="form form-control btn btn-secondary"onClick={() => setShowModal(false)}type="button">Cancelar</button>
-              <button className="form form-control btn btn-primary" type="submit">Registrar</button>
+              <button className="form form-control btn btn-primary" type="submit">{modoEdicion ? "Guardar Cambios" : "Registrar"}</button>
             </Modal.Footer>
           </form>
         </Modal>
