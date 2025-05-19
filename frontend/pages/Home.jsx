@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Card, Row, Col, Button } from "react-bootstrap";
+import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import { IoCheckmarkOutline } from "react-icons/io5";
 import { FaArrowRight } from "react-icons/fa6";
@@ -267,26 +268,93 @@ export default function Home() {
       <div>
         <Container>
         <Row>
-          <Col className="pb-5 mb-5">
+          <Col className="pb-5 mb-5 me-3">
           <img src="/logo-black.png" className="align-content-start" style={{height : "200px"}}/>
           <h1 className="fw-bold mb-4 ">Hazlo tuyo con Paintball Medellín</h1>
           <span className="fst-italic fs-5 ">Vive la adrenalina al máximo con nuestras experiencias diseñadas para grupos, empresas y aventureros. En Paintball Medellín, combinamos escenarios estratégicos, equipos de alta calidad e instructores expertos para brindarte diversión segura e inolvidable.
           Descubre nuestros planes personalizados, reserva en línea y prepárate para una batalla épica en medio de la naturaleza.
           </span>
 
-          {/*Aca piensaba colocar relatos satisfactorios de clientes */}
-          </Col>
-          <Col className="justify-content-center">
+          </Col> 
+          <Col className="align-self-center mt-5 ms-5">
+          <Carousel className="shadow">
+        <Carousel.Item>
+          <Card className="border-0 shadow mx-auto" >
+            <Card.Body className="text-center p-4 mb-3">
+              <img 
+                src="person1.jpg"
+                className="rounded-5 d-flex align-items-center justify-content-center mx-auto mb-3" 
+                style={{ width: '120px', height: '140px' }}
+              />
+              <Card.Text className="fst-italic mb-3">
+                "¡El mejor evento de paintball que hemos organizado! La adrenalina, el equipo y la atención al cliente fueron increíbles. ¡Repetiremos sin duda!"
+              </Card.Text>
+              <Card.Title className="fw-bold mb-1">Carlos Pérez</Card.Title>
+              <Card.Subtitle className="text-muted ">CEO, Aventuras Extremas</Card.Subtitle>
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
 
-          
-          </Col>
+        {/* Testimonio 2 */}
+        <Carousel.Item>
+          <Card className="border-0 shadow mx-auto" >
+            <Card.Body className="text-center p-4 mb-3">
+              <img 
+                src="person2.jpg"
+                className="rounded-5 d-flex align-items-center justify-content-center mx-auto mb-3" 
+                style={{ width: '130px', height: '120px' }}
+              />
+              <Card.Text className="fst-italic mb-3">
+                "Nos ayudaron a organizar el cumpleaños perfecto para mi hijo y sus amigos. Todos salieron encantados y llenos de anécdotas divertidas."
+              </Card.Text>
+              <Card.Title className="fw-bold mb-1">Laura García</Card.Title>
+              <Card.Subtitle className="text-muted ">Madre de cliente</Card.Subtitle>
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
 
+        {/* Testimonio 3 */}
+        <Carousel.Item>
+          <Card className="border-0 shadow mx-auto" >
+            <Card.Body className="text-center p-4 mb-3">
+              <img 
+                src="person3.jpg"
+                className="rounded-5 d-flex align-items-center justify-content-center mx-auto mb-3" 
+                style={{ width: '130px', height: '90%' }}
+              />
+              <Card.Text className="fst-italic mb-3">
+                "Organizamos un evento corporativo para nuestro equipo y fue un éxito total. Excelente opción para fortalecer el trabajo en equipo."
+              </Card.Text>
+              <Card.Title className="fw-bold mb-1">Ricardo López</Card.Title>
+              <Card.Subtitle className="text-muted ">Gerente de Recursos Humanos, Empresa XYZ</Card.Subtitle>
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
 
-        </Row>
-        </Container>
-        
-      </div>
-     
+        {/* Testimonio 4 */}
+        <Carousel.Item>
+          <Card className="border-0 shadow mx-auto" >
+            <Card.Body className="text-center p-4 mb-3">
+              <img 
+                src="person4.jpg"
+                className="rounded-5 d-flex align-items-center justify-content-center mx-auto mb-3" 
+                style={{ width: '130px', height: '90%' }}
+              />
+              <Card.Text className="fst-italic mb-3">
+                "La mejor experiencia de paintball que hemos tenido. La atención al detalle y la seguridad fueron impecables. ¡Muy recomendable!"
+              </Card.Text>
+              <Card.Title className="fw-bold mb-1">Daniela Torres</Card.Title>
+              <Card.Subtitle className="text-muted ">Cliente frecuente</Card.Subtitle>
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
+      </Carousel>
+
+        </Col>
+      </Row>
+      </Container>
+    </div>
+
     </div>
   );
 }

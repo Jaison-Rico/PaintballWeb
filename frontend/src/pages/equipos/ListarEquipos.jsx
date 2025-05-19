@@ -128,8 +128,8 @@ const handleEditar = (id_equipo) => {
                   <td>{e.cantidad_disponible}</td>
                   <td>{e.precio}</td>
                   <td scope="row">
-                    <button onClick={() => abrirModalEditar(e)} className="text-body border-primary">Editar</button>
-                    <button onClick={() => handleEliminar(e.id_equipo)} className="text-body border-warning">Eliminar</button>
+                    <button onClick={() => abrirModalEditar(e)} className="text-body btn btn-warning m-1">Editar</button>
+                    <button onClick={() => handleEliminar(e.id_equipo)} className="text-body btn btn-danger">Eliminar</button>
                   </td>
                 </tr>
               ))
