@@ -29,11 +29,11 @@ export default function Login() {
         return setError(data.msg || "Error al iniciar sesión")
       }
 
-      // Guardar token en localStorage
+      // Guardar token y estado en localStorage
       localStorage.setItem("token", data.token)
-
+      localStorage.setItem("loggedIn", "true");
       // Redirigir al usuario al home o dashboard
-      navigate("/")
+      window.location.href = "/";
     } catch (err) {
       setError("Error del servidor")
       console.error(err)

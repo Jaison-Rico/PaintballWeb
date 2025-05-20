@@ -129,8 +129,8 @@ const handleEditar = (id_reserva) => {
             <td>{r.duracion_reserva} h</td>
             <td>{r.estado_reserva}</td>
             <td scope="row">
-              <button onClick={() => abrirModalEditar(r)} className="text-body border-primary">Editar</button>
-              <button onClick={() => handleEliminar(r.id_reserva)} className="text-body border-warning">Eliminar</button>
+              <button onClick={() => abrirModalEditar(r)} className="btn btn-warning me-2">Editar</button>
+              <button onClick={() => handleEliminar(r.id_reserva)} className="btn btn-danger">Eliminar</button>
             </td>
           </tr>
           )}

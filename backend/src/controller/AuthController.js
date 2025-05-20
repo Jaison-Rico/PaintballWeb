@@ -18,7 +18,7 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ msg: 'El usuario no existe' })
     }
 
-    const isMatch = contrasena === user.contrasena; // Solo para pruebas locales
+    const isMatch = contrasena === user.contrasena; 
       if (!isMatch) {
         return res.status(400).json({ msg: 'Contraseña incorrecta' })
       }
