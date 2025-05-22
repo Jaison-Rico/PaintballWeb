@@ -7,6 +7,7 @@ import Login from "../pages/Login"
 import Register from "../pages/Register"
 import ListarEquipos from './pages/equipos/ListarEquipos'
 import ListarReservas from './pages/reservas/ListarReservas'
+import PrivateRoute from '../components/PrivateRoute'
 
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
         <Route path='/Campos' element={<Campos/>} />
         <Route path='/Login' element={<Login />} />
         <Route path='/Register' element={<Register />} />
-        <Route path='/listarEquipos' element={<ListarEquipos />}></Route>
-        <Route path='/listarReservas' element={<ListarReservas />}></Route>
+        <Route path="/listarEquipos" element={<PrivateRoute><ListarEquipos /></PrivateRoute>} />
+        <Route path='/listarReservas' element={<PrivateRoute><ListarReservas /></PrivateRoute>} />
 
       </Routes>
       <Footer />

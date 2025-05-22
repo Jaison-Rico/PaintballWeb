@@ -5,6 +5,15 @@ import Navbar from "react-bootstrap/Navbar"
 import Button from "react-bootstrap/Button"
 import "../components/css/Style.css"
 
+const token = localStorage.getItem('token');
+
+const res = await fetch('/api/equipos', {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  }
+});
+
+
 export default function Header() {
   const [ isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -65,16 +74,20 @@ useEffect(() => {
               Registrarse
             </Nav.Link>
             <Nav.Link className="text-grey fw-semibold" href="/Login">
-              Login
+              Iniciar sesion
             </Nav.Link>
             <Button href="/reservar-ahora" className="btn-orange   fw-semibold">
               Reserva Ahora
             </Button>
             </>
             ) : (
-               <Button onClick={handleLogout} variant="danger">
-                Logout
-              </Button>
+              <><Nav.Link className="text-grey fw-semibold" href="/listarEquipos">
+                  Equipo Disponible
+                  </Nav.Link><Button href="/listarReservas" className="btn-orange   fw-semibold">
+                    Reserva Ahora
+                  </Button><Button onClick={handleLogout} variant="danger">
+                    Salir
+                  </Button></>
             )}
           </Nav>
         </Navbar.Collapse>
