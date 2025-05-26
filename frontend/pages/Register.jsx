@@ -2,10 +2,12 @@ import React from "react";
 import backgroundImage from "/bg.png";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Register() {
 
-const [usuarios, setUsuarios] = useState([])
+const navigate = useNavigate();
 const [error, setError] = useState("") //definimos la variable error y la inicializamos en un string vacío (porque no sabemos si va a haber error o no)
 const [usuario, setUsuario] = useState({
   nombre: '', // ' ' para varchar, 0 para enteros
@@ -38,6 +40,10 @@ const handleSubmit = async (e) => {
       direccion: '',
       contrasena: ''
     }) // Limpiamos el formulario después del registro exitoso
+
+    setTimeout(() => {
+      navigate('/login'); // Cambia '/login' por la ruta deseada
+    }, 2000);
     
   } catch (error) {
     setError(error.response?.data?.message || "Error al registrar el usuario");
