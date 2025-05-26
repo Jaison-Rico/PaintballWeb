@@ -82,7 +82,7 @@ export default function Login() {
             </button>
 
             <div className="text-center mt-3" >
-              <a style={{ color: "#2C3E50", border: "none", textDecoration: "none" }} href="#">¿Olvidaste tu contraseña?</a>
+              <a style={{ color: "#2C3E50", border: "none", textDecoration: "none" }} href="/Register">¿No tienes una cuenta? Registrarse</a>
             </div>
           </form>
         </div>
