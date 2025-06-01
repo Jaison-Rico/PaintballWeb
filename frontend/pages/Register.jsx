@@ -142,7 +142,7 @@ const handleSubmit = async (e) => {
             <div className="mb-3">
               <label className="form-label">Contraseña</label>
               <input
-                type="text"
+                type="password"
                 className="form-control"
                 name="contrasena"
                 placeholder="Ingrese su contraseña"

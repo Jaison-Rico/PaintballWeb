@@ -19,6 +19,9 @@ export default function ListarEquipos() {
   const [paginaActual, setPaginaActual] = useState(1); // Página actual, inicia en 1
   const equiposPorPagina = 5; // Número de elementos que se mostrarán por página
 
+// obtener el rol del usuario guardado en localStorage (admin o usuario)
+  const rol = localStorage.getItem("rol"); // con esto controlamos permisos para mostrar botones y modal
+
   useEffect(() => {
     //useEffect se ejecuta cada vez que la página se renderiza
     fetchEquipos(); //llamamos a la función fetchEquipos
@@ -121,11 +124,14 @@ export default function ListarEquipos() {
   return (
       <Container>
         <br />
+         {/*boton solo visible para administradores */}
+        {rol === 'admin' && (
         <button className="form form-control btn btn-primary p-3" onClick={() => {
           setEquipo({ nombre_equipo: '', cantidad_disponible: 0, precio: 0 })
           setModoEdicion(false)
           setShowModal(true)
         }}>Registrar Equipo</button>
+        )}
         <br />
         <h1 className="text-center mt-5 mb-5">Listado de Equipamientos</h1>
 
@@ -136,7 +142,8 @@ export default function ListarEquipos() {
               <th scope="col">Nombre</th>
               <th scope="col">Cantidad</th>
               <th scope="col">Precio</th>
-              <th scope="col">Acciones</th>
+              {/*mostrar columna de acciones solo si es admin */}
+              {rol === 'admin' && <th scope="col">Acciones</th>}
             </tr>
           </thead>
           <tbody>
@@ -146,10 +153,13 @@ export default function ListarEquipos() {
                   <td>{e.nombre_equipo}</td>
                   <td>{e.cantidad_disponible}</td>
                   <td>{e.precio}</td>
+                  {/* mostrar botones de editar y eliminar solo si es admin */}
+                  {rol === 'admin' &&(
                   <td scope="row">
                     <button onClick={() => abrirModalEditar(e)} className="text-body btn btn-warning m-1">Editar</button>
                     <button onClick={() => handleEliminar(e.id_equipo)} className="text-body btn btn-danger">Eliminar</button>
                   </td>
+                  )}
                 </tr>
               ))
             }

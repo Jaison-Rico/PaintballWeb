@@ -27,6 +27,7 @@ export const loginUser = async (req, res) => {
     const payload = {
       user: {
         id: user.id_usuario,
+        rol: user.rol
       },
     }
 
@@ -36,7 +37,7 @@ export const loginUser = async (req, res) => {
       { expiresIn: 3600 },
       (err, token) => {
         if (err) throw err
-        res.json({ token })
+        res.json({ token, user: {id:user.id_usuario, nombre: user.nombre, rol: user.rol} })
       }
     )
   } catch (error) {
@@ -46,7 +47,7 @@ export const loginUser = async (req, res) => {
 }
 
 export const registerUser = async (req, res) => {
-  const { nombre, documento_identidad, correo_electronico, telefono, direccion, contrasena } = req.body
+  const { nombre, documento_identidad, correo_electronico, telefono, direccion, contrasena, rol='usuario' } = req.body
 
     console.log('Datos recibidos en el controlador:', req.body);
   try {
@@ -60,7 +61,7 @@ export const registerUser = async (req, res) => {
     return res.status(400).json({ message: 'El correo ya está siendo utilizado' });
    }
 
-    const userAdded = await addUser({ nombre, documento_identidad, correo_electronico, telefono, direccion, contrasena})
+    const userAdded = await addUser({ nombre, documento_identidad, correo_electronico, telefono, direccion, contrasena, rol})
     if (userAdded){
       res.status(201).json({ message: 'Usuario registrado exitosamente'})
     }else {

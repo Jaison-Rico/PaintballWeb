@@ -32,6 +32,8 @@ export default function Login() {
       // Guardar token y estado en localStorage
       localStorage.setItem("token", data.token)
       localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("rol", data.user.rol)        
+      localStorage.setItem("nombre", data.user.nombre)  
       // Redirigir al usuario al home o dashboard
       window.location.href = "/";
     } catch (err) {

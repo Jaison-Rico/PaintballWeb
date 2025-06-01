@@ -16,7 +16,7 @@ export const findUserByEmail = async (correo_electronico) => {
 }
 export const addUser = async (usuario) => {
   try {
-    const { nombre, documento_identidad, correo_electronico, telefono, direccion, contrasena } = usuario
+    const { nombre, documento_identidad, correo_electronico, telefono, direccion, contrasena, rol='usuario' } = usuario
     const pool = await getConnection
     const result = await pool
       .request()
@@ -26,6 +26,7 @@ export const addUser = async (usuario) => {
       .input('telefono', sql.VarChar, telefono)
       .input('direccion', sql.VarChar, direccion)
       .input('contrasena', sql.VarChar, contrasena)
+      .input('rol', sql.VarChar, rol)
       .execute('AgregarUsuarios')
       if (result.rowsAffected && result.rowsAffected[0] > 0) {
         return true; // Indica que el usuario fue añadido exitosamente
