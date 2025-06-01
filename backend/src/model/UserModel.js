@@ -26,7 +26,7 @@ export const addUser = async (usuario) => {
       .input('telefono', sql.VarChar, telefono)
       .input('direccion', sql.VarChar, direccion)
       .input('contrasena', sql.VarChar, contrasena)
-      .input('rol', sql.VarChar, rol)
+      //.input('rol', sql.VarChar, rol)
       .execute('AgregarUsuarios')
       if (result.rowsAffected && result.rowsAffected[0] > 0) {
         return true; // Indica que el usuario fue añadido exitosamente
