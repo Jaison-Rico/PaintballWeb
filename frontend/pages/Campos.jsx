@@ -7,7 +7,7 @@ export default function Campos() {
     <div>
     <Container className='mt-5 mb-5'>
         <Row>
-            <Carousel data-bs-theme="dark">
+            <Carousel data-bs-theme="">
                 <Carousel.Item interval={3000}>
                     <img className="d-block w-100" src="campo1.jpg" alt="carousel1" style={{width:"100%", height:"700px"}} />
                     <Carousel.Caption>

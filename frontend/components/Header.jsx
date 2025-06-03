@@ -1,40 +1,100 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+import Container from "react-bootstrap/Container"
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
+import Button from "react-bootstrap/Button"
+import "../components/css/Style.css"
+
+const token = localStorage.getItem('token');
+
+const res = await fetch('/api/equipos', {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  }
+});
+
 
 export default function Header() {
+  const [ isLoggedIn, setIsLoggedIn] = useState(false)
+
+useEffect(() => {
+  const checkLogin = () => {
+    const loggedIn = localStorage.getItem("loggedIn") === "true"
+    setIsLoggedIn(loggedIn)
+  };
+
+  checkLogin()
+
+  window.addEventListener("storage", checkLogin)
+
+  return () => {
+    window.removeEventListener("storage", checkLogin);
+  }
+}, [])
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedIn")
+    localStorage.removeItem("token")
+    setIsLoggedIn(false)
+    window.location.href = "/"
+  }
+
+
+
   return (
-    <header>
-      <div>
-        <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#2C3E50" }}>
-          <div className="container-fluid">
-            <a className="navbar-brand text-white" href="#">Paintball City</a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-              aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/">Home</Link>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-white" href="#">About</a>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/Campos">Campos</Link>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-white" href="/Register">Registrarse</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-white" href="/Login">Login</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
+    <Navbar
+      className="custom-navbar"
+      style={{ padding: "0.75rem" }}
+      expand="lg"
+      sticky="top"
+    >
+      <Container fluid>
+      <a href="/"><img src="/logo.png" style={{height : "55px"}} /></a>
+        <Navbar.Brand href="/" className="text-white fs-4 fw-bolder">
+          Paintball City
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="justify-content-end flex-grow-1 pe-3 gap-3">
+             {!isLoggedIn ? (
+              <>
+            <Nav.Link className="text-grey fw-semibold" href="/">
+              Inicio
+            </Nav.Link>
+            {/* <Nav.Link className="text-grey fw-medium" href="/servicios">
+              Servicios
+            </Nav.Link>
+            <Nav.Link className="text-grey fw-semibold" href="/galeria">
+              Galería
+            </Nav.Link> */}
+            <Nav.Link className="text-grey fw-semibold" href="/listarReservas">
+               Reservas
+           </Nav.Link>
+            <Nav.Link className="text-grey fw-semibold" href="/Register">
+              Registrarse
+            </Nav.Link>
+            <Nav.Link className="text-grey fw-semibold" href="/Login">
+              Iniciar sesion
+            </Nav.Link>
+            <Button href="/reservar-ahora" className="btn-orange   fw-semibold">
+              Reserva Ahora
+            </Button>
+            </>
+            ) : (
+              <><Nav.Link className="text-grey fw-semibold" href="/listarEquipos">
+                  Equipo Disponible
+                  </Nav.Link><Button href="/listarUsuarios" className="btn-orange   fw-semibold">
+                    Usuarios
+                  </Button><Button href="/listarReservas" className="btn-orange   fw-semibold">
+                    Reserva Ahora
+                  </Button><Button onClick={handleLogout} variant="danger">
+                    Salir
+                  </Button></>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
+
