@@ -8,6 +8,7 @@ import Register from "../pages/Register"
 import ListarEquipos from './pages/equipos/ListarEquipos'
 import ListarReservas from './pages/reservas/ListarReservas'
 import PrivateRoute from '../components/PrivateRoute'
+import ListarUsuarios from './pages/usuarios/listarUsuarios'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/Register' element={<Register />} />
         <Route path="/listarEquipos" element={<PrivateRoute><ListarEquipos /></PrivateRoute>} />
         <Route path='/listarReservas' element={<PrivateRoute><ListarReservas /></PrivateRoute>} />
+        <Route path='/listarUsuarios' element={<PrivateRoute><ListarUsuarios /></PrivateRoute>} />
 
       </Routes>
       <Footer />

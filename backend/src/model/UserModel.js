@@ -26,7 +26,7 @@ export const addUser = async (usuario) => {
       .input('telefono', sql.VarChar, telefono)
       .input('direccion', sql.VarChar, direccion)
       .input('contrasena', sql.VarChar, contrasena)
-      //.input('rol', sql.VarChar, rol)
+      .input('rol', sql.VarChar, 'usuario')
       .execute('AgregarUsuarios')
       if (result.rowsAffected && result.rowsAffected[0] > 0) {
         return true; // Indica que el usuario fue añadido exitosamente
@@ -41,6 +41,49 @@ export const addUser = async (usuario) => {
       throw error; // Propaga el error para que el controlador lo capture y lo maneje
     }
 
+    
 }
+// Editar usuario
+export const updateUser = async (id_usuario, { nombre, documento_identidad, correo_electronico, telefono, direccion, rol }) => {
+  try {
+    const pool = await sql.connect(config);
+    await pool.request()
+      .input('id_usuario', sql.Int, id_usuario)
+      .input('nombre', sql.VarChar, nombre)
+      .input('documento_identidad', sql.VarChar, documento_identidad)
+      .input('correo_electronico', sql.VarChar, correo_electronico)
+      .input('telefono', sql.VarChar, telefono)
+      .input('direccion', sql.VarChar, direccion)
+      .input('rol', sql.VarChar, rol)
+      .query(`
+        UPDATE Usuarios SET
+          nombre = @nombre,
+          documento_identidad = @documento_identidad,
+          correo_electronico = @correo_electronico,
+          telefono = @telefono,
+          direccion = @direccion,
+          rol = @rol
+        WHERE id_usuario = @id_usuario
+      `);
+    return true;
+  } catch (error) {
+    console.error('Error al editar usuario:', error);
+    return false;
+  }
+};
+
+// Eliminar usuario
+export const deleteUser = async (id_usuario) => {
+  try {
+    const pool = await sql.connect(config);
+    await pool.request()
+      .input('id_usuario', sql.Int, id_usuario)
+      .query('DELETE FROM Usuarios WHERE id_usuario = @id_usuario');
+    return true;
+  } catch (error) {
+    console.error('Error al eliminar usuario:', error);
+    return false;
+  }
+};
 
 

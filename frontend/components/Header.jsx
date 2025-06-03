@@ -83,7 +83,9 @@ useEffect(() => {
             ) : (
               <><Nav.Link className="text-grey fw-semibold" href="/listarEquipos">
                   Equipo Disponible
-                  </Nav.Link><Button href="/listarReservas" className="btn-orange   fw-semibold">
+                  </Nav.Link><Button href="/listarUsuarios" className="btn-orange   fw-semibold">
+                    Usuarios
+                  </Button><Button href="/listarReservas" className="btn-orange   fw-semibold">
                     Reserva Ahora
                   </Button><Button onClick={handleLogout} variant="danger">
                     Salir
